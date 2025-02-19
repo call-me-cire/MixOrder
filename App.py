@@ -33,6 +33,8 @@ class App(QMainWindow):
 
     def select_file(self):
         file_path, _ = QFileDialog.getOpenFileName(self, "Open File", "", "All Files (*)")
+        if not file_path:
+            return
         self.parser.set_file_path(file_path)
         self.parser.get_playlists()
         self.set_playlist_check_boxes(self.parser.playListNames)
